@@ -52,10 +52,4 @@ public class UserService {
 //        return repository.save(oldUser);
 //    }
 
-    public User enableUser(String id, boolean enable) {
-        User user = findById(id).orElseThrow(() -> new EntityNotFoundException(User.class, id));
-        user.setStatus(enable);
-        return repository.save(user);
-    }
-
 }

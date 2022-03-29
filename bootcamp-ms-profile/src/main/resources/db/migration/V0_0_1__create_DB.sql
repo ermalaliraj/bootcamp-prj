@@ -2,8 +2,8 @@ create table users (
     id varchar primary key,
     name varchar,
     email varchar,
-    gender char,
-    status boolean
+    gender varchar,
+    status varchar
 );
 
 --

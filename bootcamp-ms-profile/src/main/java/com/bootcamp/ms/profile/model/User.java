@@ -22,7 +22,7 @@ public class User extends BaseEntity {
     @Column(name = "gender")
     private String gender;
     @Column(name = "status")
-    private boolean status = true;
+    private String status = "ACTIVE";
 
 //    @ManyToMany(fetch = FetchType.LAZY)
 //    @JoinTable(name = "users_roles",

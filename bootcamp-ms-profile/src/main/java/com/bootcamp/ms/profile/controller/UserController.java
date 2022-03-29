@@ -6,6 +6,7 @@ import com.bootcamp.ms.profile.dto.mapper.UserDtoMapper;
 import com.bootcamp.ms.profile.model.User;
 import com.bootcamp.ms.profile.queryparam.UserQueryParam;
 import com.bootcamp.ms.profile.service.UserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +24,7 @@ public class UserController {
     private UserService userService;
     @Autowired
     private UserDtoMapper userDtoMapper;
+    ObjectMapper objectMapper = new ObjectMapper();
 //    @Autowired
 //    private RoleDtoMapper roleDtoMapper;
 
@@ -41,8 +43,7 @@ public class UserController {
     @PostMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
     public UserDto importUsersExternal(@PathVariable("id") String id) {
         try {
-            UserDto newDto = new UserDto();
-            URL url = new URL("https://gorest.co.in/public/v2/users");
+            URL url = new URL("https://gorest.co.in/public/v2/users/" +id);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-Type", "application/json");
@@ -52,21 +53,13 @@ public class UserController {
                 Scanner scan = new Scanner(url.openStream());
                 while (scan.hasNext()) {
                     String temp = scan.nextLine();
-                    System.out.println("PRINT " + temp);
-
-
-                    //parse json here...........................
-                    String extUser = id;
-
-
+                    UserDto newDto = objectMapper.readValue(temp, UserDto.class);
+                    User user = userDtoMapper.toEntity(newDto);
+                    user = userService.insert(user);
+                    return userDtoMapper.toDto(user);
                 }
-                newDto = new UserDto();
-                newDto.setId(id);
-                User user = userDtoMapper.toEntity(newDto);
-                user = userService.insert(user);
-                newDto = userDtoMapper.toDto(user);
             }
-            return newDto;
+            return null;
         } catch (Exception e) {
             throw new IllegalStateException("Error", e);
         }
@@ -82,11 +75,6 @@ public class UserController {
     @DeleteMapping(value = "/{id}")
     public void deleteById(@PathVariable("id") String id) {
         userService.delete(id);
-    }
-
-    @PutMapping(value = "/{id}/{enabled}")
-    public void enableUser(@PathVariable("id") String id, @PathVariable("enabled") boolean enabled) {
-        userService.enableUser(id, enabled);
     }
 
 }

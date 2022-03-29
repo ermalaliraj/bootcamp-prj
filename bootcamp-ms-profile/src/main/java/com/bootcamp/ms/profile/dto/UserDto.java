@@ -1,5 +1,6 @@
 package com.bootcamp.ms.profile.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -11,7 +12,11 @@ public class UserDto extends BaseDto {
     private String name;
     private String email;
     private String gender;
-    private boolean status;
+    private String status;
 
+//    @JsonProperty("status")
+//    public void setIsStatus(boolean isDel) {
+//        this.status = String.valueOf(isDel);
+//    }
 //    private List<RoleDto> roles = new ArrayList<>();
 }
