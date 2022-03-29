@@ -28,20 +28,13 @@ public class UserSpecification extends BaseEntitySpecification<User, UserQueryPa
             predicates.add(superPredicate);
         }
 
-        if (queryParam.getSearchText() != null) {
-            var referentPredicates = new ArrayList<Predicate>();
-            referentPredicates.add(builder.like(builder.lower(root.get("userName")), BootcampUtil.addWildcard(queryParam.getSearchText().toLowerCase())));
-            referentPredicates.add(builder.like(builder.lower(root.get("firstName")), BootcampUtil.addWildcard(queryParam.getSearchText().toLowerCase())));
-            referentPredicates.add(builder.like(builder.lower(root.get("lastName")), BootcampUtil.addWildcard(queryParam.getSearchText().toLowerCase())));
-            referentPredicates.add(builder.like(builder.lower(root.get("email")), BootcampUtil.addWildcard(queryParam.getSearchText().toLowerCase())));
-
-            predicates.add(builder.or(referentPredicates.toArray(new Predicate[]{})));
+        if (queryParam.getName() != null) {
+            predicates.add(builder.equal(root.get("name"), queryParam.getName()));
         }
 
-        if (queryParam.getEnabled() != null) {
-            predicates.add(builder.equal(root.get("enabled"), queryParam.getEnabled()));
+        if (queryParam.getGender() != null) {
+            predicates.add(builder.equal(root.get("gender"), queryParam.getGender()));
         }
-
         return builder.and(predicates.toArray(new Predicate[]{}));
     }
 

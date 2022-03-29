@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserQueryParam extends BaseQueryParam {
-    private String searchText;
-    private Boolean enabled;
+    private String name;
+    private String gender;
 }

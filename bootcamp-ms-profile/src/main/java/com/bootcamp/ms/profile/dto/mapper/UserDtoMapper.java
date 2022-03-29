@@ -14,13 +14,14 @@ import org.springframework.data.domain.Page;
 
 import java.util.List;
 
-@Mapper(config = DtoMapperConfiguration.class, uses = {RoleDtoMapper.class})
+//@Mapper(config = DtoMapperConfiguration.class, uses = {RoleDtoMapper.class})
+@Mapper(config = DtoMapperConfiguration.class)
 public abstract class UserDtoMapper {
 
     @Autowired
     protected RoleDtoMapper roleDtoMapper;
 
-    @Mapping(target = "roles", expression = "java(toRoleDto(user))")
+//    @Mapping(target = "roles", expression = "java(toRoleDto(user))")
     public abstract UserDto toDto(User user);
 
     public abstract List<UserDto> toDto(List<User> users);
@@ -31,18 +32,16 @@ public abstract class UserDtoMapper {
     }
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "creationDate", ignore = true)
-    @Mapping(target = "lastUpdate", ignore = true)
     public abstract void updateEntity(User newUser, @MappingTarget User oldEntity);
 
     public abstract User toEntity(UserDto dto);
 
-    public List<RoleDto> toRoleDto(User user) {
-        final List<Role> userRoles = user.getRoles();
-        if (userRoles == null) {
-            return null;
-        }
-        return roleDtoMapper.toDto(Hibernate.unproxy(userRoles, Hibernate.getClass(userRoles)));
-    }
+//    public List<RoleDto> toRoleDto(User user) {
+//        final List<Role> userRoles = user.getRoles();
+//        if (userRoles == null) {
+//            return null;
+//        }
+//        return roleDtoMapper.toDto(Hibernate.unproxy(userRoles, Hibernate.getClass(userRoles)));
+//    }
 
 }

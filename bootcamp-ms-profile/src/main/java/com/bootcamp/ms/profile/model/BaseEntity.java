@@ -1,41 +1,33 @@
 package com.bootcamp.ms.profile.model;
 
-import com.bootcamp.ms.profile.listener.UUIDEntityListener;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
+import javax.persistence.Column;
+import javax.persistence.EntityListeners;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 @Getter
 @Setter
 @MappedSuperclass
-@EntityListeners({AuditingEntityListener.class, UUIDEntityListener.class})
+//@EntityListeners({AuditingEntityListener.class, UUIDEntityListener.class})
+@EntityListeners({AuditingEntityListener.class})
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public abstract class BaseEntity {
 
     @Id
     @Setter
-    @Column(name = "uuid")
+    @Column(name = "id")
     @ToString.Include
     @EqualsAndHashCode.Include
     private String id;
-
-    @CreatedDate
-    @Column(name = "creationdate", nullable = false, updatable = false)
-    private LocalDateTime creationDate;
-
-    @LastModifiedDate
-    @Column(name = "lastupdate")
-    private LocalDateTime lastUpdate;
 
     @Override
     public String toString() {

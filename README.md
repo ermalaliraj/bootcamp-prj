@@ -23,9 +23,9 @@ Check if the app is up and running `http://localhost:8084/roles`
 
 ### Endpoint for Roles API
 ```
-GET http://localhost:8084/users
-DELETE http://localhost:8084/users/USER_ROLE
-POST http://localhost:8084/users
+GET http://localhost:8084/roles
+DELETE http://localhost:8084/roles/USER_ROLE
+POST http://localhost:8084/roles
 {
     "name": "editor",
     "description": "editor"

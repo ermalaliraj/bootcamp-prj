@@ -7,12 +7,11 @@ import java.util.List;
 
 @Data
 public class UserDto extends BaseDto {
-    private String userName;
-    private String firstName;
-    private String lastName;
+    private String id;
+    private String name;
     private String email;
-    private String phone;
-    private boolean enabled;
+    private String gender;
+    private boolean status;
 
-    private List<RoleDto> roles = new ArrayList<>();
+//    private List<RoleDto> roles = new ArrayList<>();
 }
