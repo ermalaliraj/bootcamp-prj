@@ -9,7 +9,7 @@
         <version>2.3.1.RELEASE</version>
     </parent>
 
-    <groupId>com.ea.campus</groupId>
+    <groupId>com.bootcamp</groupId>
     <artifactId>bootcamp-ms-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
@@ -17,7 +17,7 @@
     <description>Bootcamp Dependencies BOM for Spring Boot Projects</description>
 
     <!--<modules>-->
-    <!--    <module>campus-student-ms</module>-->
+        <!--<module>bootcamp-profile-ms</module>-->
     <!--</modules>-->
 
     <properties>

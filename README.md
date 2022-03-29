@@ -9,7 +9,14 @@ cd bootcamp-ms-profile/docker
 docker-compose up -d
 ```
 
-(2)  Run the microservice `CampusProfilesApplication`
+(2)  Run the Build and Run the microservice
+```
+bootcamp-prj> mvn clean install
+cd bootcamp-ms-profile
+bootcamp-prj/cd bootcamp-ms-profile> mvn clean install
+```
+
+Run the class  `BootcampProfileApplication`
 
 (3) Check if the app is up and running `http://localhost:8084/roles`
 
