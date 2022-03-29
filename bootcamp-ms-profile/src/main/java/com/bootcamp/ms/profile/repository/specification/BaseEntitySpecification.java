@@ -1,7 +1,7 @@
 package com.bootcamp.ms.profile.repository.specification;
 
 import com.bootcamp.ms.profile.model.BaseEntity;
-import com.bootcamp.ms.profile.util.CampusUtil;
+import com.bootcamp.ms.profile.util.BootcampUtil;
 import com.bootcamp.ms.profile.queryparam.BaseQueryParam;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,11 +29,11 @@ public abstract class BaseEntitySpecification<E extends BaseEntity, Q extends Ba
         }
 
         if (queryParam.getCreationDateFrom() != null) {
-            predicates.add(builder.greaterThanOrEqualTo(root.get("creationDate"), CampusUtil.parseDateTime(queryParam.getCreationDateFrom())));
+            predicates.add(builder.greaterThanOrEqualTo(root.get("creationDate"), BootcampUtil.parseDateTime(queryParam.getCreationDateFrom())));
         }
 
         if (queryParam.getCreationDateTo() != null) {
-            predicates.add(builder.lessThanOrEqualTo(root.get("creationDate"), CampusUtil.parseDateTime(queryParam.getCreationDateTo())));
+            predicates.add(builder.lessThanOrEqualTo(root.get("creationDate"), BootcampUtil.parseDateTime(queryParam.getCreationDateTo())));
         }
 
         return predicates.isEmpty() ? null : builder.and(predicates.toArray(new Predicate[]{}));

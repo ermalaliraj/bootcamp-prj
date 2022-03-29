@@ -3,9 +3,9 @@ server:
 
 spring:
     datasource:
-        url: jdbc:postgresql://localhost:3433/CampusDB
-        username: campus
-        password: campus
+        url: jdbc:postgresql://localhost:3433/bootcampDB
+        username: bootcamp
+        password: bootcamp
     data:
         jpa:
             hibernate:

@@ -4,7 +4,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
-public final class CampusUtil {
+public final class BootcampUtil {
 
     public static LocalDateTime parseDateTime(Long millis) {
         return LocalDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.systemDefault());

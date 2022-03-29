@@ -61,9 +61,9 @@ PUT http://localhost:8084/users/202201151824        (add roles to user)
 
 Connect from the client
 ```
-url: jdbc:postgresql://localhost:3433/CampusDB
-username: campus
-password: campus
+url: jdbc:postgresql://localhost:3433/bootcampDB
+username: bootcamp
+password: bootcamp
 ```
 
 ### Run Docker Services

@@ -1,7 +1,7 @@
 package com.bootcamp.ms.profile.repository.specification;
 
 import com.bootcamp.ms.profile.model.User;
-import com.bootcamp.ms.profile.util.CampusUtil;
+import com.bootcamp.ms.profile.util.BootcampUtil;
 import com.bootcamp.ms.profile.queryparam.UserQueryParam;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,10 +30,10 @@ public class UserSpecification extends BaseEntitySpecification<User, UserQueryPa
 
         if (queryParam.getSearchText() != null) {
             var referentPredicates = new ArrayList<Predicate>();
-            referentPredicates.add(builder.like(builder.lower(root.get("userName")), CampusUtil.addWildcard(queryParam.getSearchText().toLowerCase())));
-            referentPredicates.add(builder.like(builder.lower(root.get("firstName")), CampusUtil.addWildcard(queryParam.getSearchText().toLowerCase())));
-            referentPredicates.add(builder.like(builder.lower(root.get("lastName")), CampusUtil.addWildcard(queryParam.getSearchText().toLowerCase())));
-            referentPredicates.add(builder.like(builder.lower(root.get("email")), CampusUtil.addWildcard(queryParam.getSearchText().toLowerCase())));
+            referentPredicates.add(builder.like(builder.lower(root.get("userName")), BootcampUtil.addWildcard(queryParam.getSearchText().toLowerCase())));
+            referentPredicates.add(builder.like(builder.lower(root.get("firstName")), BootcampUtil.addWildcard(queryParam.getSearchText().toLowerCase())));
+            referentPredicates.add(builder.like(builder.lower(root.get("lastName")), BootcampUtil.addWildcard(queryParam.getSearchText().toLowerCase())));
+            referentPredicates.add(builder.like(builder.lower(root.get("email")), BootcampUtil.addWildcard(queryParam.getSearchText().toLowerCase())));
 
             predicates.add(builder.or(referentPredicates.toArray(new Predicate[]{})));
         }
