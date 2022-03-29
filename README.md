@@ -9,7 +9,7 @@ cd bootcamp-ms-profile/docker
 docker-compose up -d
 ```
 
-(2)  Run the Build and Run the microservice
+(2)  Build and Run the microservice
 ```
 bootcamp-prj> mvn clean install
 cd bootcamp-ms-profile
@@ -18,10 +18,10 @@ bootcamp-prj/cd bootcamp-ms-profile> mvn clean install
 
 Run the class  `BootcampProfileApplication`
 
-(3) Check if the app is up and running `http://localhost:8084/roles`
+Check if the app is up and running `http://localhost:8084/roles`
 
 
-### Roles
+### Endpoint for Roles API
 ```
 GET http://localhost:8084/users
 DELETE http://localhost:8084/users/USER_ROLE
@@ -32,7 +32,7 @@ POST http://localhost:8084/users
 }
 ```
 
-### Users
+### Endpoint for users API
 ```
 GET http://localhost:8084/users                     (get all)
 GET http://localhost:8084/users/202201151824        (get byId)
@@ -65,13 +65,3 @@ url: jdbc:postgresql://localhost:3433/bootcampDB
 username: bootcamp
 password: bootcamp
 ```
-
-### Run Docker Services
-```
-cd ./docker
-docker-compose up -d
-```
-
-
-### Links
-- [Campus](https://github.com/ermalaliraj/campus)
